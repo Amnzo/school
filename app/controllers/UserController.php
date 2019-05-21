@@ -30,7 +30,10 @@ class UserController extends BaseController {
 
 	public function check()
 	{
+
+		var_dump("cheking");
 		$inputs = Input::all();
+		var_dump(Input::all());
 
 
 		if (Input::get('remember')) {

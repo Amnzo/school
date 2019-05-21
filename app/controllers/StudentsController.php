@@ -263,23 +263,24 @@ class StudentsController extends BaseController {
 		$user = User::find($id);
 
 		if ($user !== null) {
-
+             var_dump("1");
 
 			// delete marks
 			$marks = Marks::where('student_id', $user->id)->delete();
-
+   
 
 			// delete comments
 			$comments = Comment::where('user_id', $user->id)->delete();
 
-
 			// delete image
 	        if (!empty($user->image)) {
+	        	var_dump("26");
 	            unlink(public_path()."/uploads/profiles/students/".$user->image);
 	        }
 
-
+         
 			$user->delete();
+			var_dump("4");
 
 			$path = Session::get('language');
 			return Redirect::back()->with('success', Lang::get($path.'.Deleted_successfully'));
